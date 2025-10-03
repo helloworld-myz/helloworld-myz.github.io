@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>我的技术博客</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content on 我的技术博客</description>
+    <generator>Hugo -- 0.151.0</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 03 Oct 2025 09:36:06 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hello Hugo</title>
+      <link>http://localhost:1313/posts/hello-hugo/</link>
+      <pubDate>Fri, 03 Oct 2025 09:36:06 +0800</pubDate>
+      <guid>http://localhost:1313/posts/hello-hugo/</guid>
+      <description>&lt;h1 id=&#34;hello-hugo&#34;&gt;Hello Hugo&lt;/h1&gt;
+&lt;h2 id=&#34;我的第一篇博客&#34;&gt;我的第一篇博客&lt;/h2&gt;
+&lt;h3 id=&#34;基于hugogithub-pages&#34;&gt;基于Hugo、Github Pages&lt;/h3&gt;
+&lt;p&gt;这是我的第一篇博客，欢迎大家来阅读。&lt;/p&gt;
+&lt;p&gt;&amp;lsquo;&amp;lsquo;&amp;lsquo;shell
+hugo new post/hello-hugo.md
+hugo server -D
+&amp;rsquo;&amp;rsquo;&amp;rsquo;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/about/</guid>
+      <description>&lt;h1 id=&#34;helloworld-myzgithubio&#34;&gt;helloworld-myz.github.io&lt;/h1&gt;
+&lt;h1 id=&#34;我的博客仓库&#34;&gt;我的博客仓库&lt;/h1&gt;
+&lt;h2 id=&#34;这个仓库存放我的个人博客内容文章图片等所有原创内容采用-cc-by-nc-40-协议-授权&#34;&gt;这个仓库存放我的个人博客内容（文章、图片等），所有原创内容采用 &lt;strong&gt;CC-BY-NC 4.0 协议&lt;/strong&gt; 授权：&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;允许非商业用途的复制、分发和修改；&lt;/li&gt;
+&lt;li&gt;任何使用需注明原作者（你的名字/博客地址）；&lt;/li&gt;
+&lt;li&gt;禁止用于商业目的（如盈利性转载、嵌入付费产品等）。&lt;/li&gt;
+&lt;li&gt;详细协议见 &lt;a href=&#34;LICENSE&#34;&gt;LICENSE&lt;/a&gt; 文件。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;使用的第三方项目协议声明&#34;&gt;使用的第三方项目协议声明&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;仓库中使用的 Hugo PaperMod主题遵循 MIT 协议，详见主题&lt;a href=&#34;https://github.com/adityatelange/hugo-PaperMod/blob/master/LICENSE&#34;&gt;官方仓库&lt;/a&gt; 说明。&lt;/li&gt;
+&lt;li&gt;仓库中使用的 Hugo 静态网站生成器遵循 Apache 2.0 协议，详见 &lt;a href=&#34;https://github.com/gohugoio/hugo/blob/master/LICENSE&#34;&gt;Hugo 官方仓库&lt;/a&gt; 说明。&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+  </channel>
+</rss>

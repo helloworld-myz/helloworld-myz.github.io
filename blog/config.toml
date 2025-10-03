@@ -1,0 +1,57 @@
+# 基础配置（PaperMod 主题必需项）
+baseURL = "http://localhost:1313/"  # 本地预览地址，部署时改域名
+languageCode = "zh-CN"
+defaultContentLanguage = "zh-CN"    # 与下面的 [languages.zh-CN] 严格匹配
+title = "我的技术博客"  # 你的博客名称
+theme = "PaperMod"
+enableEmoji = true
+hasCJKLanguage = true  # 支持中文排版
+
+# 语言配置（解决多语言识别问题，必须与 defaultContentLanguage 一致）
+[languages]
+  [languages.zh-CN]
+    languageName = "中文"  # 显示的语言名称
+    weight = 1  # 权重，默认语言设为 1
+
+# 分页配置（Hugo 新版本语法）
+[pagination]
+  pagerSize = 10  # 每页显示10篇文章
+
+# 导航菜单（顶部导航栏）
+[[menu.main]]
+  name = "首页"
+  url = "/"
+  weight = 10
+
+[[menu.main]]
+  name = "归档"
+  url = "/archives/"
+  weight = 20
+
+[[menu.main]]
+  name = "标签"
+  url = "/tags/"
+  weight = 30
+
+[[menu.main]]
+  name = "分类"
+  url = "/categories/"
+  weight = 40
+
+[[menu.main]]
+  name = "关于"
+  url = "/about/"
+  weight = 50
+
+# PaperMod 主题核心配置
+[params]
+  author = "helloworld-myz"
+  description = "记录技术学习的日常"  # 博客简介
+  dateFormat = "2006-01-02"  # 日期格式
+  toc = true  # 开启文章目录
+  disableSpecial1 = true
+  disableSpecial2 = true
+  # 可选：深色模式切换
+  # darkMode = true
+  # 可选：网站图标（放在 static 目录下）
+  # favicon = "favicon.ico"
