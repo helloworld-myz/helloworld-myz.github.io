@@ -19,7 +19,10 @@
 &lt;p&gt;这是我的第一篇博客，欢迎大家来阅读。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hugo new post/hello-hugo.md
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hugo server -D
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;搭建这个博客我踩了不少坑，主要是Hugo的配置、Github Pages的配置、Markdown语法的学习。
+踩过最多的坑就是关于Github Pages的配置，因为我之前没有用过，所以很多东西都需要自己摸索。
+上传到仓库里总是出现Error不通过，让我很头疼。
+还有Github的服务器问题，经常出现500 Internal Server Error，让我很郁闷。&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
