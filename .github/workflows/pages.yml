@@ -19,40 +19,38 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      HUGO_VERSION: 0.146.0  # 保持与你本地一致的版本
-      HUGO_SOURCE: ./blog  # Hugo 项目所在的子目录（关键配置）
+      HUGO_VERSION: 0.151.0  # 替换为你本地的 Hugo 版本（执行 hugo version 查看）
     steps:
-      - name: Clean and set permissions
+      - name: Install Hugo
         run: |
-        # 清理旧构建目录
-        rm -rf ./blog/public
-        # 确保 blog 目录有读写权限
-        chmod -R 755 ./blog
-        - name: Install Hugo
-          run: |
-            wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_linux-amd64.deb \
-            && sudo dpkg -i ${{ runner.temp }}/hugo.deb
+          wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_linux-amd64.deb \
+          && sudo dpkg -i ${{ runner.temp }}/hugo.deb
 
       - name: Checkout code
         uses: actions/checkout@v4
         with:
           ref: main
-          submodules: false  # 禁用子模块（如果主题不是子模块）
+          submodules: false  # 若主题是子模块，改为 true
+
+      - name: Clean and set permissions
+        run: |
+          # 清理旧构建目录（若存在）
+          rm -rf ./blog/public
+          # 确保 blog 目录有读写权限
+          chmod -R 755 ./blog
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      - name: Build with Hugo（从 blog 子目录构建）
+      - name: Build with Hugo（详细日志模式）
         run: |
-          # 进入 blog 目录执行构建，确保读取正确的 config.toml
-          cd ${{ env.HUGO_SOURCE }}
-          hugo --baseURL ${{ steps.pages.outputs.base_url }}
-        # 构建后，静态文件会生成在 ./blog/public（由 blog/config.toml 中的 publishDir 决定）
+          cd ./blog  # 进入 Hugo 项目所在的 blog 子目录
+          hugo --baseURL ${{ steps.pages.outputs.base_url }} --verbose  # 详细日志便于排查
 
       - name: Upload blog/public 目录
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ${{ env.HUGO_SOURCE }}/public  # 明确上传 blog/public 目录
+          path: ./blog/public  # 上传构建产物
 
   deploy:
     needs: build
@@ -60,4 +58,3 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
-        # 无需指定 folder，自动读取上传的 artifact
