@@ -1,5 +1,8 @@
 # 基础配置（PaperMod 主题必需项）
-baseURL = "https://helloworld-myz.github.io/"  # 部署时改域名
+baseURL = "https://helloworld-myz.github.io/"  # 必须是你的 GitHub Pages 完整域名
+publishDir = "./docs"  # 明确指定构建输出目录（默认就是 public，确保和实际一致）
+relativeURLs = false   # 禁用相对路径，强制使用基于 baseURL 的绝对路径
+canonifyURLs = true    # 确保所有链接都自动补全 baseURL
 languageCode = "zh-CN"
 defaultContentLanguage = "zh-CN"    # 与下面的 [languages.zh-CN] 严格匹配
 title = "我的技术博客"  # 你的博客名称

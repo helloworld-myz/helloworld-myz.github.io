@@ -1,0 +1,51 @@
+name: Deploy Hugo to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # 你的主分支
+  workflow_dispatch:
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      HUGO_VERSION: 0.146.0  # Hugo 版本，与之前一致
+    steps:
+      - name: Install Hugo
+        run: |
+          wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_linux-amd64.deb \
+          && sudo dpkg -i ${{ runner.temp }}/hugo.deb
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          submodules: false  # 禁用子模块
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Build with Hugo
+        run: hugo --baseURL ${{ steps.pages.outputs.base_url }}
+
+      - name: Upload docs folder
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./docs  # 对应你 config 里的 publishDir
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
