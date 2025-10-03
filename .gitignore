@@ -1,5 +1,6 @@
 hugo.exe
 blog/*.cmd
+*.cmd
 
 # 保留构建产物（让 Pages 部署）
 !/*.html
