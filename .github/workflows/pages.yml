@@ -3,8 +3,8 @@ name: Deploy Hugo to GitHub Pages
 on:
   push:
     branches:
-      - main  # 主分支
-  workflow_dispatch:  # 允许手动触发
+      - main
+  workflow_dispatch:
 
 concurrency:
   group: "pages"
@@ -19,8 +19,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      HUGO_VERSION: 0.151.0  # 与本地版本一致
-      SITE_URL: "https://helloworld-myz.github.io/"  # 硬编码你的网站地址
+      HUGO_VERSION: 0.151.0  # 确保与本地版本一致
     steps:
       - name: Install Hugo
         run: |
@@ -31,20 +30,17 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: main
-          submodules: false  # 若主题是 git 子模块，改为 true
+          submodules: false  # 主题不是子模块则保持 false
 
-      - name: Clean and set permissions
-        run: |
-          rm -rf ./blog/public
-          chmod -R 755 ./blog
+      - name: Clean old build
+        run: rm -rf ./blog/public
 
-      - name: Build with Hugo（修复 baseURL 参数）
+      - name: Build Hugo site (不指定 --baseURL，依赖 config.toml)
         run: |
           cd ./blog
-          # 直接使用硬编码的 SITE_URL，确保 --baseURL 有值
-          hugo --baseURL "${{ env.SITE_URL }}"
+          hugo  # 直接执行 hugo，完全依赖配置文件中的 baseURL
 
-      - name: Upload blog/public 目录
+      - name: Upload build artifacts
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./blog/public
