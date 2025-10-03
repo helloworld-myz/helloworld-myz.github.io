@@ -9,7 +9,7 @@ title = 'Hello Hugo'
 
 这是我的第一篇博客，欢迎大家来阅读。
 
-'''shell
+```bash
 hugo new post/hello-hugo.md
 hugo server -D
-'''
+```
