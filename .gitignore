@@ -1,2 +1,11 @@
 hugo.exe
 blog/*.cmd
+
+# 保留构建产物（让 Pages 部署）
+!/*.html
+!/css/
+!/js/
+!/posts/
+!/about/
+!/categories/
+!/tags/

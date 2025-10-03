@@ -3,8 +3,8 @@ name: Deploy Hugo to GitHub Pages
 on:
   push:
     branches:
-      - main  # 你的主分支
-  workflow_dispatch:
+      - main  # 主分支
+  workflow_dispatch:  # 允许手动触发
 
 concurrency:
   group: "pages"
@@ -19,7 +19,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      HUGO_VERSION: 0.146.0  # Hugo 版本，与之前一致
+      HUGO_VERSION: 0.146.0  # 保持与你本地一致的版本
+      HUGO_SOURCE: ./blog  # Hugo 项目所在的子目录（关键配置）
     steps:
       - name: Install Hugo
         run: |
@@ -30,18 +31,22 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: main
-          submodules: false  # 禁用子模块
+          submodules: false  # 禁用子模块（如果主题不是子模块）
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      - name: Build with Hugo
-        run: hugo --baseURL ${{ steps.pages.outputs.base_url }}
+      - name: Build with Hugo（从 blog 子目录构建）
+        run: |
+          # 进入 blog 目录执行构建，确保读取正确的 config.toml
+          cd ${{ env.HUGO_SOURCE }}
+          hugo --baseURL ${{ steps.pages.outputs.base_url }}
+        # 构建后，静态文件会生成在 ./blog/public（由 blog/config.toml 中的 publishDir 决定）
 
-      - name: Upload docs folder
+      - name: Upload blog/public 目录
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./public  # 对应你 config 里的 publishDir
+          path: ${{ env.HUGO_SOURCE }}/public  # 明确上传 blog/public 目录
 
   deploy:
     needs: build
@@ -49,3 +54,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
+        # 无需指定 folder，自动读取上传的 artifact
