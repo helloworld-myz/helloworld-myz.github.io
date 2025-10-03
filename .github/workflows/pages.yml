@@ -45,7 +45,7 @@ jobs:
       - name: Build with Hugo（详细日志模式）
         run: |
           cd ./blog  # 进入 Hugo 项目所在的 blog 子目录
-          hugo --baseURL ${{ steps.pages.outputs.base_url }} --verbose  # 详细日志便于排查
+          hugo --baseURL ${{ steps.pages.outputs.base_url }} # 详细日志 --verbose，放在这里会出现bug，先注释掉
 
       - name: Upload blog/public 目录
         uses: actions/upload-pages-artifact@v3
