@@ -19,7 +19,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      HUGO_VERSION: 0.151.0  # 替换为你本地的 Hugo 版本（执行 hugo version 查看）
+      HUGO_VERSION: 0.151.0  # 与本地版本一致
+      SITE_URL: "https://helloworld-myz.github.io/"  # 硬编码你的网站地址
     steps:
       - name: Install Hugo
         run: |
@@ -30,26 +31,23 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: main
-          submodules: false  # 若主题是子模块，改为 true
+          submodules: false  # 若主题是 git 子模块，改为 true
 
       - name: Clean and set permissions
         run: |
-          # 清理旧构建目录（若存在）
           rm -rf ./blog/public
-          # 确保 blog 目录有读写权限
           chmod -R 755 ./blog
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-
-      - name: Build with Hugo（详细日志模式）
+      - name: Build with Hugo（修复 baseURL 参数）
         run: |
-          cd ./blog  # 进入 Hugo 项目所在的 blog 子目录
-          hugo --baseURL ${{ steps.pages.outputs.base_url }}
+          cd ./blog
+          # 直接使用硬编码的 SITE_URL，确保 --baseURL 有值
+          hugo --baseURL "${{ env.SITE_URL }}"
+
       - name: Upload blog/public 目录
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./blog/public  # 上传构建产物
+          path: ./blog/public
 
   deploy:
     needs: build
