@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Posts on 我的技术博客</title>
-    <link>https://helloworld-myz.github.io/posts/</link>
-    <description>Recent content in Posts on 我的技术博客</description>
+    <title>欢迎来到我的技术博客 on 我的技术博客</title>
+    <link>http://localhost:1313/posts/</link>
+    <description>Recent content in 欢迎来到我的技术博客 on 我的技术博客</description>
     <generator>Hugo -- 0.151.0</generator>
     <language>zh-cn</language>
     <lastBuildDate>Fri, 03 Oct 2025 09:36:06 +0800</lastBuildDate>
-    <atom:link href="https://helloworld-myz.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hello Hugo</title>
-      <link>https://helloworld-myz.github.io/posts/hello-hugo/</link>
+      <link>http://localhost:1313/posts/hello-hugo/</link>
       <pubDate>Fri, 03 Oct 2025 09:36:06 +0800</pubDate>
-      <guid>https://helloworld-myz.github.io/posts/hello-hugo/</guid>
+      <guid>http://localhost:1313/posts/hello-hugo/</guid>
       <description>&lt;h1 id=&#34;hello-hugo&#34;&gt;Hello Hugo&lt;/h1&gt;
 &lt;h2 id=&#34;我的第一篇博客&#34;&gt;我的第一篇博客&lt;/h2&gt;
 &lt;h3 id=&#34;基于hugogithub-pages&#34;&gt;基于Hugo、Github Pages&lt;/h3&gt;

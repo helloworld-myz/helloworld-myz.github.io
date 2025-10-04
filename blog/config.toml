@@ -1,30 +1,34 @@
 # 基础配置（PaperMod 主题必需项）
-baseURL = "https://helloworld-myz.github.io/"  # 必须是你的 GitHub Pages 完整域名
-publishDir = "./public"  # 明确指定构建输出目录（默认就是 public，确保和实际一致）
-relativeURLs = false   # 禁用相对路径，强制使用基于 baseURL 的绝对路径
-canonifyURLs = true    # 确保所有链接都自动补全 baseURL
+baseURL = "https://helloworld-myz.github.io/"  # GitHub Pages 完整域名（必填）
+publishDir = "./public"  # 构建输出目录（默认，保持不变）
+relativeURLs = false     # 禁用相对路径，强制使用绝对路径（推荐）
+canonifyURLs = true      # 自动补全 baseURL 到所有链接（推荐）
 languageCode = "zh-CN"
-defaultContentLanguage = "zh-CN"    # 与下面的 [languages.zh-CN] 严格匹配
-title = "我的技术博客"  # 你的博客名称
-theme = "PaperMod"
-enableEmoji = true
-hasCJKLanguage = true  # 支持中文排版
+defaultContentLanguage = "zh-CN"  # 与下方语言配置严格匹配
+title = "我的技术博客"    # 博客名称（会显示在浏览器标签页）
+theme = "PaperMod"       # 主题名称（固定）
+enableEmoji = true       # 支持表情符号
+hasCJKLanguage = true    # 优化中文排版（避免英文单词拆分）
+timeout = 60000          # 延长构建超时时间（避免大文件处理失败）
 
-# 语言配置（解决多语言识别问题，必须与 defaultContentLanguage 一致）
+# 语言配置（解决多语言识别问题）
 [languages]
   [languages.zh-CN]
-    languageName = "中文"  # 显示的语言名称
-    weight = 1  # 权重，默认语言设为 1
+    languageName = "中文"
+    weight = 1  # 默认语言权重（1 为最高）
+    # 补充语言相关的元数据（优化 SEO）
+    metaDataFormat = "yaml"
+    contentDir = "content"  # 内容目录（默认，确保中文内容在此目录）
 
-# 分页配置（Hugo 新版本语法）
+# 分页配置（控制首页/归档页文章数量）
 [pagination]
-  pagerSize = 10  # 每页显示10篇文章
+  pagerSize = 10  # 每页显示 10 篇文章（可根据需求调整）
 
 # 导航菜单（顶部导航栏）
 [[menu.main]]
   name = "首页"
   url = "/"
-  weight = 10
+  weight = 10  # 权重越小，显示越靠左
 
 [[menu.main]]
   name = "归档"
@@ -48,13 +52,27 @@ hasCJKLanguage = true  # 支持中文排版
 
 # PaperMod 主题核心配置
 [params]
-  author = "helloworld-myz"
-  description = "记录技术学习的日常"  # 博客简介
-  dateFormat = "2006-01-02"  # 日期格式
-  toc = true  # 开启文章目录
-  disableSpecial1 = false
-  disableSpecial2 = false
-  # 可选：深色模式切换
-  # darkMode = true
-  # 可选：网站图标（放在 static 目录下）
-  # favicon = "favicon.ico"
+  author = "helloworld-myz"  # 作者名称（用于文章署名等）
+  description = "专注于编程、IT、开源、IoT 技术分享的个人博客"  # 博客全局简介（用于 SEO 和首页默认描述）
+  dateFormat = "2006-01-02"  # 日期格式（固定语法，保持此格式即可）
+  showToc = true             # 文章内显示目录
+  TocOpen = true             # 默认展开目录
+  ShowCodeCopyButtons = true # 代码块显示复制按钮（实用功能）
+  # 禁用主题中可能冲突的特殊功能（避免干扰首页显示）
+  disableSpecial1 = true
+  disableSpecial2 = true
+  # 网站图标（放在 static 目录下，如 static/favicon.ico）
+  favicon = "favicon.ico"
+  # 主页头部信息配置（解决之前的模板解析错误）
+  [params.homeInfoParams]
+    socialOptions = true                   # 显示社交链接（与下方 [params.social] 配合）
+    avatar = "/images/avatar.png"          # 头像路径（必须以 / 开头，对应 static/images/avatar.png）
+    name = "helloworld-myz"                # 显示在头像下方的名称
+    description = "分享编程、IT、开源、IoT 相关技术内容"  # 主页简介（显示在名称下方）
+    # 移除 enableBio（PaperMod 无此参数，避免配置冲突）
+
+# 社交链接配置（配合 homeInfoParams.socialOptions = true 显示）
+[params.social]
+  github = "https://github.com/helloworld-myz"        # GitHub 链接（主题原生支持，会显示图标）
+  bilibili = "https://space.bilibili.com/2060407817"  # B站链接（部分版本支持，若不显示图标可忽略）
+  email = "mailto:3584888076@qq.com"                  # 邮箱链接（用 mailto: 协议，点击直接发邮件）
