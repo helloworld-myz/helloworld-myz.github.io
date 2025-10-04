@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>欢迎来到我的技术博客 on 我的技术博客</title>
+    <title>Posts on 我的技术博客</title>
     <link>http://localhost:1313/posts/</link>
-    <description>Recent content in 欢迎来到我的技术博客 on 我的技术博客</description>
+    <description>Recent content in Posts on 我的技术博客</description>
     <generator>Hugo -- 0.151.0</generator>
     <language>zh-cn</language>
     <lastBuildDate>Fri, 03 Oct 2025 09:36:06 +0800</lastBuildDate>
@@ -23,6 +23,14 @@
 踩过最多的坑就是关于Github Pages的配置，因为我之前没有用过，所以很多东西都需要自己摸索。
 上传到仓库里总是出现Error不通过，让我很头疼。
 还有Github的服务器问题，经常出现500 Internal Server Error，让我很郁闷。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Python 实现管理员权限运行</title>
+      <link>http://localhost:1313/posts/python%E4%BD%BF%E7%94%A8%E7%AE%A1%E7%90%86%E5%91%98%E8%BA%AB%E4%BB%BD%E8%BF%90%E8%A1%8C/</link>
+      <pubDate>Fri, 03 Oct 2025 09:36:06 +0800</pubDate>
+      <guid>http://localhost:1313/posts/python%E4%BD%BF%E7%94%A8%E7%AE%A1%E7%90%86%E5%91%98%E8%BA%AB%E4%BB%BD%E8%BF%90%E8%A1%8C/</guid>
+      <description>&lt;h1 id=&#34;python-使用管理员权限运行不需要手动操作&#34;&gt;Python 使用管理员权限运行，不需要手动操作&lt;/h1&gt;
+&lt;p&gt;&lt;img alt=&#34;C++&#34; loading=&#34;lazy&#34; src=&#34;static/images/Python%E4%BD%BF%E7%94%A8%E7%AE%A1%E7%90%86%E5%91%98%E8%BA%AB%E4%BB%BD%E8%BF%90%E8%A1%8C/C++%E4%BB%A3%E7%A0%81.png&#34;&gt;&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

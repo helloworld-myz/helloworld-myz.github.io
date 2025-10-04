@@ -5,7 +5,6 @@
 {{- else }} {{/* if not profileMode */}}
 
 {{- if not .IsHome | and .Title }}
-
 <header class="page-header">
   {{- partial "breadcrumbs.html" . }}
   <h1>
@@ -31,24 +30,12 @@
 </header>
 {{- end }}
 
-{{- /* 新增：主页简介区域（仅在首页显示） */}}
-{{- if .IsHome }}
-<div class="home-intro">
-  <h1>欢迎来到我的技术博客</h1>
-  <p>这里专注分享编程、IT、开源及IoT相关技术内容，包括Hugo建站技巧、GitHub Pages部署、开源工具使用经验等。</p>
-  <ul>
-    <li>博主：helloworld-myz</li>
-    <li>技术方向：Web开发、DevOps、物联网</li>
-    <li>交流方式：<a href = "https://github.com/helloworld-myz">GitHub</a> / <a href = "https://space.bilibili.com/2060407817">B站</a> / <a href = "mailto:3584888076@qq.com">邮箱</a> </li>
-  </ul>
-</div>
-{{- end }}
-
 {{- if .Content }}
 <div class="post-content">
   {{- if not (.Param "disableAnchoredHeadings") }}
   {{- partial "anchored_headings.html" .Content -}}
   {{- else }}{{ .Content }}{{ end }}
+</div>
 {{- end }}
 
 {{- $pages := union .RegularPages .Sections }}
@@ -75,6 +62,7 @@
 {{- else if $term }}
 {{- $class = "post-entry tag-entry" }}
 {{- end }}
+
 <article class="{{ $class }}">
   {{- $isHidden := (.Param "cover.hiddenInList") | default (.Param "cover.hidden") | default false }}
   {{- partial "cover.html" (dict "cxt" . "IsSingle" false "isHidden" $isHidden) }}
